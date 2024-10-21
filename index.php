@@ -1,3 +1,32 @@
+<?php
+
+  // 指定したファイルを１回だけ読み込む
+  include_once("./app/database/connect.php");
+
+  // submitButtonが呼ばれたらtrueとなる
+  if (isset($_POST["submitButton"])) {
+    $username = $_POST["username"];
+    $body = $_POST["body"];
+    var_dump($username);
+    var_dump($body);
+  }
+
+  // 配列をつくる
+  $comment_array = array();
+
+  // コメントデータをテーブルから取得する
+  $sql = "SELECT * FROM comment";
+  // SQLを実行する準備をする
+  $statement = $pdo->prepare($sql);
+  // 上記のSQLを実行する
+  $statement->execute();
+
+  // SQL文で取得したデータを連想配列で取得する
+  $comment_array = $statement;
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,26 +50,28 @@
         <h1>2ちゃんねる掲示板を作ってみた</h1>
       </div>
       <section>
+        <?php foreach($comment_array as $comment) :?>
         <article>
           <div class="wrapper">
             <div class="nameArea">
               <span>名前：</span>
-              <p class="username">shincode</p>
-              <time>:2024.10.20 20:00</time>
+              <p class="username"><?php echo $comment["username"];?></p>
+              <time>：<?php echo $comment["post_date"];?></time>
             </div>
-            <p class="comment">手書きのコメントです</p>
+            <p class="comment"><?php echo $comment["body"];?> </p>
           </div>
         </article>
+        <?php endforeach ?>
       </section>
 
-      <form class="formWrapper">
+      <form class="formWrapper" method="POST">
         <div>
-          <input type="submit" value="書き込む">
+          <input type="submit" value="書き込む" name="submitButton">
           <label>名前：</label>
-          <input type="text">
+          <input type="text" name="username">
         </div>
         <div>
-          <textarea class="commentTextArea"></textarea>
+          <textarea class="commentTextArea" name="body"></textarea>
         </div>
       </form>
     </div>
