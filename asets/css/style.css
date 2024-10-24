@@ -69,7 +69,8 @@ section .comment {
 
 .errorMessage {
   color: red;
-  margin-left: 70px;
+  /* color: blue; */
+  margin-left: 170px;
 }
 
 /* 新規スレッド */
