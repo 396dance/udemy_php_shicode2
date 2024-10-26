@@ -1,7 +1,8 @@
 <?php
 
   // 指定したファイルを１回だけ読み込む
-  include_once("../database/connect.php");
+  include_once("../../app/database/connect.php");
+  include_once("../../app/functions/thread_add.php");
 
 
 ?>
