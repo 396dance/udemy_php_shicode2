@@ -41,6 +41,8 @@
       $statement->execute();
     }
 
+    // 掲示板ページに遷移する
+    header("Location: http://localhost:8888/udemy_php_shincode2/");
   }
 
   ?>
