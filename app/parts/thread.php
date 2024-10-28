@@ -2,13 +2,8 @@
 
   // データベースへ接続
   include_once("./app/database/connect.php");
-
   // コメントデータを登録する
-  include("app/functions/comment_add.php");
-
-  // コメントデータを取得する
-  include("app/functions/comment_get.php"); 
-  
+  include("app/functions/comment_add.php"); 
   // スレッドデータを取得する
   include("app/functions/thread_get.php"); 
 

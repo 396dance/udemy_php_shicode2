@@ -13,8 +13,5 @@
   // SQL文で取得したデータを連想配列で取得する
   $thread_array = $statement;
 
-  // DB接続を切る
-  $pdo = null;
-  $statement = null;
 
-  ?>
+  

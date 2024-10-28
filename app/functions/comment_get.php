@@ -13,4 +13,4 @@
   // SQL文で取得したデータを連想配列で取得する
   $comment_array = $statement;
 
-  ?>
+  
